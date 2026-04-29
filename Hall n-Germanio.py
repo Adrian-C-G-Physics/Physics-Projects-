@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # ==============================
 # Parámetros físicos (Ge tipo n)
 # ==============================
-RH_real_n = 4.8e-4      # Constante Hall (m^3/C)
+RH_real_n = -4.8e-3      # Constante Hall (m^3/C)
 d = 1.0e-3             # Espesor de la muestra (m) 1 mm
 
 # ==============================

@@ -74,4 +74,18 @@ plt.title("Tensión de la muestra vs Temperatura")
 plt.legend()
 plt.grid()
 
+# ==============================
+# GRÁFICA EXTRA: ln(sigma) vs 1/T
+# ==============================
+invT = 1 / T                 # [1/K]
+ln_sigma = np.log(sigma)     # ln(S/m)
+
+plt.figure()
+plt.plot(invT, ln_sigma, linewidth=2)
+plt.xlabel(r"$1/T\ \mathrm{[K^{-1}]}$")
+plt.ylabel(r"$\ln(\sigma)\ \mathrm{[S/m]}$")
+plt.title(r" $\ln(\sigma)$ vs $1/T$")
+plt.grid()
+
+
 plt.show()
