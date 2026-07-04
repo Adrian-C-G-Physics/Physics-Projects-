@@ -9,6 +9,18 @@ function out = HeBeam(mode, pulse, tRequest, config, varargin)
 % de emisión. Ejemplo de ficheros por shot: HE_667..., HE_706..., HE_728... y HELIO_HAZ-xxxxx.
 % Guardar todas las señales del shot en una carpeta INDIVIDUAL.
 %
+%
+%
+%%% ESTRUCTURA DE CARPETAS Y ARCHIVOS NECESARIOS PARA HeBeam
+% Para ejecutar correctamente esta función, los archivos auxiliares fijos del algoritmo deben estar siempre en la misma carpeta que esta función MATLAB: hebeam_9_CSV_download.m, HeBeamSupport.m, hebeam_rhon.json, hebeam_z0.csv y ratios.txt.
+% Estos tres últimos archivos son obligatorios: hebeam_rhon.json contiene la información geométrica para convertir la posición de los canales a rhon, hebeam_z0.csv contiene los valores de z0 asociados a cada disparo, y ratios.txt contiene las tablas de calibración necesarias para calcular ne y Te.
+% Los datos experimentales descargados del disparo no tienen por qué estar en esta misma carpeta: deben guardarse en una carpeta aparte, preferiblemente una carpeta individual por cada shot, y esa carpeta se indica al llamar a la función mediante el parámetro 'DataPath'. 
+% Dentro de esa carpeta de señales deben estar los archivos TXT tipo DownData correspondientes al disparo: un archivo con las 16 señales He_667_01 ... He_667_16, otro con He_706_01 ... He_706_16, otro con He_728_01 ... He_728_16, y otro archivo con la señal HELIO_HAZ.
+% La señal HELIO_HAZ es obligatoria para el modo 'calc', porque se usa para detectar el disparo del haz y seleccionar el tiempo real de medida más cercano a tRequest. La llamada típica es: out = hebeam_9_CSV_download('calc', pulse, tRequest, config, 'DataPath', rutaSenales). 
+% Si se quiere evitar que se guarde el CSV final, se debe añadir 'SaveCsv', false. Si se quiere desactivar el plot previo del haz o los plots finales, pueden usarse 'PlotBeamPreview', false y 'PlotResults', false.
+%
+%
+%
 % Llamar la función como:
 %   out = hebeam_0(mode, pulse, tRequest, config, 'DataPath', rutaSenales)
 %
